@@ -2394,7 +2394,7 @@ containing a value of this type.
         public static final int design_navigation_menu=0x7f040024;
         public static final int design_navigation_menu_item=0x7f040025;
         public static final int fragment_tab_1=0x7f040026;
-        public static final int Tab_3_toolbar =0x7f040027;
+        public static final int tab_3_toolbar =0x7f040027;
         public static final int notification_media_action=0x7f040028;
         public static final int notification_media_cancel_action=0x7f040029;
         public static final int notification_template_big_media=0x7f04002a;
@@ -2408,8 +2408,8 @@ containing a value of this type.
         public static final int select_dialog_singlechoice_material=0x7f040032;
         public static final int support_simple_spinner_dropdown_item=0x7f040033;
         public static final int tab_layout=0x7f040034;
-        public static final int Tab_1_toolbar =0x7f040035;
-        public static final int Tab_2_toolbar =0x7f040036;
+        public static final int tab_1_toolbar =0x7f040035;
+        public static final int tab_2_toolbar =0x7f040036;
     }
     public static final class menu {
         public static final int menu_2=0x7f0d0000;

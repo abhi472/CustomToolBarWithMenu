@@ -27,9 +27,10 @@ import com.example.adu49.materialtoolmenucustom.Fragments.Tab_3;
 import com.example.adu49.materialtoolmenucustom.R;
 
 public class MainActivity extends AppCompatActivity {
-    View mCustomView,mCustomView2,mCustomView3;
+    View mCustomView, mCustomView2, mCustomView3;
     int page;
-    ActionMenuView Amv1,Amv2,Amv3;
+    ActionMenuView Amv1, Amv2, Amv3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,15 +42,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         LayoutInflater mInflater = LayoutInflater.from(this);
-        mCustomView = mInflater.inflate(R.layout.Tab_1_toolbar, null);
-        mCustomView2 = mInflater.inflate(R.layout.Tab_2_toolbar,null);
-        mCustomView3 = mInflater.inflate(R.layout.Tab_3_toolbar,null);
-        Amv1=(ActionMenuView)mCustomView.findViewById(R.id.menu);
-        Amv2=(ActionMenuView)mCustomView2.findViewById(R.id.back);
-        Amv3=(ActionMenuView)mCustomView3.findViewById(R.id.menu3);
+        mCustomView = mInflater.inflate(R.layout.tab_1_toolbar, null);
+        mCustomView2 = mInflater.inflate(R.layout.tab_2_toolbar, null);
+        mCustomView3 = mInflater.inflate(R.layout.tab_3_toolbar, null);
+        Amv1 = (ActionMenuView) mCustomView.findViewById(R.id.menu);      //ActionMenuView For the menu icon
+        Amv2 = (ActionMenuView) mCustomView2.findViewById(R.id.back);     //ActionMenuView for back button
+        Amv3 = (ActionMenuView) mCustomView3.findViewById(R.id.menu3);    //ActionMenuView for menu on 3rd toolbar
 
-
-
+        /*      here initialising toolbar for the first time activity is created and fist fragment tab is on */
         inflateR(mCustomView);
         Amv1.setOnMenuItemClickListener(new ActionMenuView.OnMenuItemClickListener() {
             @Override
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+       /*tablayout and setting fragments on view pager*/
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         final ViewPager viewPager = (ViewPager) findViewById(R.id.tab_viewpager);
         if (viewPager != null) {
@@ -70,24 +70,22 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
 
-
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                page=viewPager.getCurrentItem();
-                if(page==0)
-                {
+                page = viewPager.getCurrentItem();
+                if (page == 0) {
+                    /*if first fragment is there*/
                     Amv1.getMenu().clear();
                     MainActivity.this.invalidateOptionsMenu();
                     inflateR(mCustomView);
 
-                }
-                else
-                if(page==1)
-                {
+                } else if (page == 1) {
+
+                    /*if second fragment is there*/
                     MainActivity.this.invalidateOptionsMenu();
                     inflateR(mCustomView2);
-                    EditText e=(EditText)mCustomView2.findViewById(R.id.searchBar);
+                    EditText e = (EditText) mCustomView2.findViewById(R.id.searchBar);
                     e.setHint((Html.fromHtml("<small>" +
                             getString(R.string.search_for_stores_offers_and_cashback) + "</small>")));
                     Amv2.setOnMenuItemClickListener(new ActionMenuView.OnMenuItemClickListener() {
@@ -96,9 +94,9 @@ public class MainActivity extends AppCompatActivity {
                             return onOptionsItemSelected(item);
                         }
                     });
-                }
-                else
-                {
+                } else {
+
+                    /*if third fragment is there*/
                     MainActivity.this.invalidateOptionsMenu();
                     inflateR(mCustomView3);
                     Amv2.setOnMenuItemClickListener(new ActionMenuView.OnMenuItemClickListener() {
@@ -121,6 +119,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+
+        /*FAB*/
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,15 +131,13 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
     }
 
 
-
-
-
-
-    void inflateR(View view)
-    {
+    /*made a function for setting up actionbars on different slides for code reduction*/
+    void inflateR(View view) {
 
         getSupportActionBar().setCustomView(view);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
@@ -148,117 +148,70 @@ public class MainActivity extends AppCompatActivity {
         lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
         v.setLayoutParams(lp);
     }
-        static class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-            public ViewPagerAdapter(FragmentManager manager) {
-                super(manager);
+    static class ViewPagerAdapter extends FragmentStatePagerAdapter {
+
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            Fragment fragment = null;
+            switch (position) {
+                case 0:
+                    fragment = new Tab_1();
+                    break;
+                case 1:
+                    fragment = new Tab_2();
+                    break;
+                case 2:
+                    fragment = new Tab_3();
+                default:
+                    break;
             }
-
-            @Override
-            public Fragment getItem(int position) {
-                Fragment fragment = null;
-                switch (position) {
-                    case 0:
-                        fragment = new Tab_1();
-                        break;
-                    case 1:
-                        fragment = new Tab_2();
-                        break;
-                    case 2:
-                        fragment = new Tab_3();
-                    default:
-                        break;
-                }
-                return fragment;
-            }
-
-
-            @Override
-            public int getCount() {
-                return 3;
-            }
-
-            @Override
-            public CharSequence getPageTitle(int position) {
-                return "page " + position;
-            }
+            return fragment;
         }
 
 
+        @Override
+        public int getCount() {
+            return 3;
+        }
 
-
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return "page " + position;
+        }
+    }
 
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.clear();
-        MenuInflater inflater=getMenuInflater();
-        if(page==0) {
+        MenuInflater inflater = getMenuInflater();
+        if (page == 0) {
 
             inflater.inflate(R.menu.menu_2, Amv1.getMenu());
-            //menu.add(1, 1, 0, "settings").setIcon(R.drawable.ic_close_white_24dp).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
-        }
-        else
-        if(page==1)
-        {
+        } else if (page == 1) {
             inflater.inflate(R.menu.menu_main, Amv2.getMenu());
             menu.add(1, 1, 0, "settings").setIcon(R.drawable.ic_close_white_24dp).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-        }
-        else
-        {
-            inflater.inflate(R.menu.menu_2,Amv3.getMenu());
+        } else {
+            inflater.inflate(R.menu.menu_2, Amv3.getMenu());
             menu.add(1, 1, 0, "settings").setIcon(R.drawable.ic_replay_white_24dp).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         }
-           return super.onPrepareOptionsMenu(menu);
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
 
-        MenuInflater inflater = getMenuInflater();
-        menu.clear();
-
-        if(page==0) {
-
-        }
-        if(page==1) {
-
-        }
-        if(page==2) {
-
-        }
-return super.onCreateOptionsMenu(menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-//if(page==0) {
-//    switch (id) {
-//        case 0:
-//            Toast.makeText(MainActivity.this, "0", Toast.LENGTH_SHORT).show();
-//            break;
-//        case 1:
-//            Toast.makeText(MainActivity.this, "1", Toast.LENGTH_SHORT).show();
-//            break;
-//        case 2:
-//            Toast.makeText(MainActivity.this, "2", Toast.LENGTH_SHORT).show();
-//            break;
-//        case 3:
-//            Toast.makeText(MainActivity.this, "3", Toast.LENGTH_SHORT).show();
-//            break;
-//        default:
-//            Toast.makeText(MainActivity.this, "no id", Toast.LENGTH_SHORT).show();
-//    }
-//}
-//        else
-//{
-//
-//}
+
         return super.onOptionsItemSelected(item);
     }
 }
