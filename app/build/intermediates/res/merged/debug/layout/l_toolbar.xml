@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar1"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:orientation="horizontal"
+    android:background="?attr/colorPrimary"
+    app:popupTheme="@style/AppTheme.PopupOverlay">
+    <android.support.v7.widget.ActionMenuView
+        android:layout_width="56dp"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_weight="1"
+        android:id="@+id/menu3"
+        />
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_weight="5"
+        android:background="@drawable/border"
+        android:clickable="true"
+        android:focusable="true"
+
+        android:foreground="?android:attr/selectableItemBackground"
+        android:orientation="vertical"
+        android:layout_gravity="end|center_vertical|right">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:gravity="center_vertical"
+            android:text="@string/search_for_stores_offers_and_cashback"
+            android:textSize="10sp"
+            android:textColor="#fff"/>
+
+    </FrameLayout>
+
+</LinearLayout>
+
