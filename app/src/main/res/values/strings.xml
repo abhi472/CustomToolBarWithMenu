@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MaterialToolMEnuCustom</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rupee">₹</string>
+    <string name="search_for_stores_offers_and_cashback">Search for Stores Offers and Cashback</string>
+    <string name="_2240">2240</string>
+</resources>

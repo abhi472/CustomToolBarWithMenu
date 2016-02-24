@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar1"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="?attr/colorPrimary"
+    app:popupTheme="@style/AppTheme.PopupOverlay">
+    <android.support.v7.widget.ActionMenuView
+        android:layout_width="56dp"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="start"
+        android:id="@+id/back"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:textSize="15sp"
+        android:layout_gravity="center_vertical"
+        android:background="@null"
+        android:id="@+id/searchBar"
+
+        android:hint="@string/search_for_stores_offers_and_cashback"
+       />
+</LinearLayout>
