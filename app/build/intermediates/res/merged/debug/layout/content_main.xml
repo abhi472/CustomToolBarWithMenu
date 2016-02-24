@@ -7,6 +7,6 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main"
-    tools:context="com.example.adu49.materialtoolmenucustom.MainActivity">
+    tools:context=".Activities.MainActivity">
     <include layout="@layout/tab_layout"/>
 </RelativeLayout>

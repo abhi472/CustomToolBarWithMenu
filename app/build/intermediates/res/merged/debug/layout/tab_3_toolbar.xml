@@ -16,7 +16,7 @@
         />
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
-        android:layout_height="24dp"
+        android:layout_height="36dp"
         android:layout_weight="5"
         android:background="@drawable/border"
         android:clickable="true"
@@ -32,7 +32,7 @@
             android:layout_gravity="center_vertical|center_horizontal"
             android:gravity="center_vertical"
             android:text="@string/search_for_stores_offers_and_cashback"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:textColor="#fff"/>
 
     </FrameLayout>

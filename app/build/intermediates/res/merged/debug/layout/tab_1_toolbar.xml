@@ -16,7 +16,7 @@
         />
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
-        android:layout_height="24dp"
+        android:layout_height="36dp"
         android:layout_weight="5"
         android:background="@drawable/border"
         android:clickable="true"
@@ -38,15 +38,15 @@
     </FrameLayout>
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
-        android:layout_height="24dp"
+        android:layout_height="36dp"
         android:background="@drawable/border"
         android:clickable="true"
         android:layout_gravity="end|center_vertical|right"
         android:focusable="true"
         android:layout_weight="3"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:foreground="?android:attr/selectableItemBackground"
         android:orientation="vertical"
@@ -60,8 +60,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical|center_horizontal"
-
             android:text="@string/rupee"
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="2dp"
             android:textSize="12sp"
             android:layout_weight="1"
             android:textColor="#fff" />
@@ -75,9 +78,7 @@
         android:gravity="center_vertical|center_horizontal"
 
 
-
-
-        />
+        android:layout_marginRight="1dp" />
 
 
 </LinearLayout>
